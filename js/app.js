@@ -73,9 +73,14 @@ const Navigation = {
     }
 };
 
-function fixVH(){
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+function scalePage(){
+    const wrapper = document.querySelector('.page-wrapper');
+    if(!wrapper) return;
+    const sx = window.innerWidth / 1280;
+    const sy = window.innerHeight / 720;
+    const s = Math.min(sx, sy);
+    wrapper.style.transform = `translate(-50%,-50%) scale(${s})`;
 }
-fixVH();
-window.addEventListener('resize', fixVH);
+scalePage();
+window.addEventListener('resize', scalePage);
 document.addEventListener('DOMContentLoaded', () => Navigation.init());
