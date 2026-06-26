@@ -73,14 +73,9 @@ const Navigation = {
     }
 };
 
-function scalePage(){
-    const wrapper = document.querySelector('.page-wrapper');
-    if(!wrapper) return;
-    const sx = window.innerWidth / 1280;
-    const sy = window.innerHeight / 720;
-    const s = Math.min(1, Math.max(sx, sy));
-    wrapper.style.transform = `translate(-50%,-50%) scale(${s})`;
+function fixVH(){
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
-scalePage();
-window.addEventListener('resize', scalePage);
+fixVH();
+window.addEventListener('resize', fixVH);
 document.addEventListener('DOMContentLoaded', () => Navigation.init());
