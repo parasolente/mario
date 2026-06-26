@@ -78,7 +78,7 @@ function scalePage(){
     if(!wrapper) return;
     const sx = window.innerWidth / 1280;
     const sy = window.innerHeight / 720;
-    const s = Math.max(sx, sy);
+    const s = Math.min(1, Math.max(sx, sy));
     wrapper.style.transform = `translate(-50%,-50%) scale(${s})`;
 }
 scalePage();
