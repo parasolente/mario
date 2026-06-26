@@ -5,22 +5,16 @@
 
 body{
     background:#000;
-    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
     font-family:'Fredoka',sans-serif;
-}
-
-.page-wrapper{
-    position:fixed;
-    top:50%;left:50%;
-    width:1280px;
-    height:720px;
-    transform-origin:center center;
-    overflow:hidden;
 }
 
 /* ROTATE SCREEN */
 .rotate-screen{
-    position:absolute;inset:0;z-index:10000;
+    position:fixed;inset:0;z-index:10000;
     background:linear-gradient(135deg,#fbd000 0%,#e52521 50%,#e52521 100%);
     display:none;flex-direction:column;justify-content:center;align-items:center;
 }
@@ -48,7 +42,7 @@ body{
 
 /* LOADING SCREEN */
 .loading-screen{
-    position:absolute;inset:0;z-index:9999;
+    position:fixed;inset:0;z-index:9999;
     background:linear-gradient(135deg,#fbd000 0%,#e52521 50%,#e52521 100%);
     display:flex;flex-direction:column;justify-content:center;align-items:center;
     transition:opacity 0.6s, visibility 0.6s;
@@ -80,18 +74,18 @@ body{
 .tip-text{font-size:15px;color:#5C3A21;line-height:1.3;font-weight:600}
 
 /* WORLDS */
-.world{display:none;width:100%;height:720px;position:relative}
+.world{display:none;width:100%;height:100vh;position:relative}
 .world.active{display:block}
 
 .bg-wrap{position:fixed;inset:0;z-index:0}
 .bg-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 
-.content-wrap{position:relative;z-index:1;width:100%;height:720px;display:flex;align-items:center;justify-content:flex-end;padding-right:4%}
+.content-wrap{position:relative;z-index:1;width:100%;height:100vh;display:flex;align-items:center;justify-content:flex-end;padding-right:4%}
 
 .mario-left{position:fixed;left:14%;top:50%;transform:translateY(-50%);width:auto;display:flex;align-items:center;justify-content:center;z-index:2}
 .logo-top-left{position:fixed;top:30px;left:40px;z-index:100}
 .logo-top-left img{height:200px;display:block}
-.mario-left img{max-width:100%;max-height:612px;object-fit:contain;display:block;animation:marioJump 1.2s ease-in-out infinite}
+.mario-left img{max-width:100%;max-height:85vh;object-fit:contain;display:block;animation:marioJump 1.2s ease-in-out infinite}
 @keyframes marioJump{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
 /* Theme colors */
@@ -102,7 +96,7 @@ body{
 .world[data-world="3"] .mario-left{left:11%}
 .world[data-world="4"]{--theme:#703087;--theme-dark:#4E1F5E}
 .world[data-world="4"] .mario-left{left:11%}
-.world[data-world="4"] .mario-left img{max-height:504px}
+.world[data-world="4"] .mario-left img{max-height:70vh}
 
 /* CARD */
 .mario-card{
@@ -234,3 +228,77 @@ body{
     box-shadow:0 4px 0 #d99b00;
 }
 .gallery-treasure-icon{font-size:28px}
+
+/* ===== RESPONSIVE: TABLET (933-1194px) ===== */
+@media(max-width:1194px){
+    .mario-card{width:60%;min-height:auto;padding:60px 20px 20px 20px}
+    .mario-left{left:8%}
+    .mario-left img{max-height:65vh}
+    .logo-top-left img{height:130px}
+    .banner-top img{height:95px}
+    .hero-name-value{font-size:24px}
+    .hero-icon{width:80px;height:80px;padding:10px}
+    .stat-icon{width:38px;height:38px}
+    .stat-label{width:75px;font-size:14px}
+    .slot-item{width:24px;height:24px}
+    .stat-value{font-size:18px;width:38px}
+    .btn-green{padding:18px 40px;font-size:22px}
+    .camera-container{max-width:440px;padding:16px}
+    .gallery-container{padding:24px;max-width:480px}
+    .content-wrap{padding-right:3%}
+}
+
+/* ===== RESPONSIVE: PHONE LANDSCAPE (<933px) ===== */
+@media(max-width:932px){
+    .mario-left{display:none}
+    .logo-top-left{top:8px;left:10px}
+    .logo-top-left img{height:45px}
+
+    .content-wrap{justify-content:center;padding:0 8px;height:100vh}
+    .mario-card{width:90%;min-height:auto;border-radius:24px;padding:42px 10px 36px 10px;gap:6px;margin-right:0}
+    .mario-card{border:4px solid #FFF;box-shadow:0 0 0 4px var(--theme),0 6px 0 4px var(--theme-dark),0 12px 16px rgba(0,40,100,0.2)}
+
+    .banner-top{top:-32px}
+    .banner-top img{height:55px}
+
+    .hero-header{padding:2px 4px}
+    .hero-name-label{font-size:9px;padding:2px 8px}
+    .hero-name-value{font-size:15px}
+    .hero-icon{width:44px;height:44px;padding:6px;border-width:3px}
+
+    .bubble-container{border-radius:14px;padding:5px 8px;gap:4px;border-width:2px;box-shadow:0 3px 0 #E3D7BC}
+    .stat-icon{width:22px;height:22px}
+    .stat-icon img{filter:drop-shadow(0 2px 0 rgba(0,0,0,0.15))}
+    .stat-label{width:45px;font-size:10px}
+    .stat-label.small{font-size:9px;letter-spacing:0.3px}
+    .slot-item{width:14px;height:14px;box-shadow:inset 0 2px 3px rgba(0,0,0,0.2),inset 0 -1px 0 rgba(255,255,255,0.5)}
+    .slots{gap:3px}
+    .stat-value{font-size:12px;width:24px}
+    .text-value{font-size:11px}
+    .power-value{font-size:11px;padding:3px 10px;border-radius:14px;border-width:2px;box-shadow:0 2px 0 #D99B00}
+
+    .bottom-btn-wrap{bottom:-14px}
+    .btn-green{padding:8px 20px;font-size:13px;border-radius:30px}
+    .btn-green{box-shadow:0 4px 0 var(--theme-dark),0 6px 8px rgba(0,0,0,0.2),inset 0 2px 0 rgba(255,255,255,0.4)}
+
+    .camera-container{padding:8px;gap:6px;border-radius:18px;width:96%;max-width:100%}
+    .camera-title{font-size:16px}
+    .camera-close{width:26px;height:26px;font-size:16px}
+    .camera-btn{padding:8px 16px;font-size:13px;border-radius:30px}
+    .camera-btn.shoot{font-size:14px}
+    .camera-hint{font-size:11px}
+
+    .gallery-container{padding:12px;gap:10px;border-radius:18px}
+    .gallery-header h1{font-size:16px}
+    .gallery-header img{height:28px!important}
+    .gallery-grid{gap:6px}
+    .gallery-item{padding:4px;gap:3px;border-width:2px;border-radius:10px}
+    .gallery-download{padding:4px 8px;font-size:10px}
+    .gallery-treasure{padding:8px 12px;font-size:11px;gap:6px}
+    .gallery-treasure-icon{font-size:18px}
+    .gallery-sub{font-size:12px}
+
+    .rotate-icon{width:90px;height:90px}
+    .rotate-content{gap:16px}
+    .rotate-sub{font-size:14px;max-width:200px}
+}

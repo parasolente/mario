@@ -73,12 +73,4 @@ const Navigation = {
     }
 };
 
-function scalePage(){
-    const wrapper = document.querySelector('.page-wrapper');
-    const scaleX = window.innerWidth / 1280;
-    const scaleY = window.innerHeight / 720;
-    const scale = Math.min(scaleX, scaleY);
-    wrapper.style.transform = `translate(-50%,-50%) scale(${scale})`;
-}
-window.addEventListener('resize', scalePage);
-document.addEventListener('DOMContentLoaded', () => { scalePage(); Navigation.init(); });
+document.addEventListener('DOMContentLoaded', () => Navigation.init());
