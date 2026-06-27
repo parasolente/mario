@@ -146,42 +146,35 @@
 
 <!-- ===== CÁMARA OVERLAY ===== -->
 <div class="camera-overlay" id="cameraOverlay">
-    <div class="camera-container">
-        <div class="camera-header">
-            <span class="camera-title">MUNDO</span>
-            <span class="camera-title-num" id="cameraWorldNum">1</span>
-            <span class="camera-close" id="cameraClose">✕</span>
+    <video id="cameraFeed" autoplay playsinline></video>
+
+    <div class="hud-top">
+        <div class="hud-title-row">
+            <span class="hud-title">MUNDO</span>
+            <span class="hud-title-num" id="cameraWorldNum">1</span>
+            <span class="hud-close" id="cameraClose">✕</span>
         </div>
-        <div class="camera-progress">
-            <div class="camera-progress-item">
-                <img src="assets/images/icons/coin.png" alt="coin" class="camera-progress-icon">
-                <span class="camera-progress-text" id="coinCount">0/5</span>
+        <div class="hud-progress">
+            <div class="hud-progress-item">
+                <img src="assets/images/icons/coin.png" alt="coin" class="hud-icon">
+                <span class="hud-text" id="coinCount">0/5</span>
             </div>
-            <div class="camera-progress-item">
-                <img src="assets/images/icons/star.png" alt="star" class="camera-progress-icon">
-                <span class="camera-progress-text" id="starCount">0/3</span>
+            <div class="hud-progress-item">
+                <img src="assets/images/icons/star.png" alt="star" class="hud-icon">
+                <span class="hud-text" id="starCount">0/3</span>
             </div>
         </div>
-        <div class="camera-frame" id="cameraFrame">
-            <video id="cameraFeed" autoplay playsinline></video>
-        </div>
-        <div class="camera-hint">Apunta a una moneda o estrella y presiona el botón</div>
-        <div class="camera-actions">
-            <button class="camera-btn coin" id="btnCoin">
-                <img src="assets/images/icons/coin.png" alt="coin" class="btn-icon">
-                Moneda
-            </button>
-            <button class="camera-btn star" id="btnStar">
-                <img src="assets/images/icons/star.png" alt="star" class="btn-icon">
-                Estrella
-            </button>
-        </div>
-        <div class="camera-actions-bottom">
-            <button class="camera-btn back" id="cameraBack">Volver</button>
-            <button class="camera-btn selfie" id="btnSelfie" style="display:none">
-                Selfie Final
-            </button>
-        </div>
+    </div>
+
+    <div class="hud-bottom">
+        <button class="hud-btn back" id="cameraBack">Volver</button>
+        <button class="hud-btn coin" id="btnCoin">
+            <img src="assets/images/icons/coin.png" alt="coin" class="btn-icon"> Moneda
+        </button>
+        <button class="hud-btn star" id="btnStar">
+            <img src="assets/images/icons/star.png" alt="star" class="btn-icon"> Estrella
+        </button>
+        <button class="hud-btn selfie" id="btnSelfie" style="display:none">Selfie</button>
     </div>
 </div>
 

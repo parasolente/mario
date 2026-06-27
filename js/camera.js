@@ -25,6 +25,8 @@ const CameraManager = {
         this.currentWorld = worldNum;
         this.initWorld(worldNum);
         document.getElementById('cameraWorldNum').textContent = worldNum;
+        document.getElementById('btnCoin').style.display = 'flex';
+        document.getElementById('btnStar').style.display = 'flex';
         this.updateProgress();
         this.overlay.classList.add('show');
         try {
