@@ -22,20 +22,22 @@ const CameraManager = {
     },
 
     async open(worldNum){
-        this.currentWorld = worldNum;
-        this.initWorld(worldNum);
-        const cfg = this.worldConfig[worldNum];
-        document.getElementById('cameraTitle').textContent = this.worldNames[worldNum];
-        document.getElementById('cameraWorldNum').textContent = worldNum;
-        this.updateProgress();
-        this.overlay.classList.add('show');
         try {
-            this.stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+            this.currentWorld = worldNum;
+            this.initWorld(worldNum);
+            const cfg = this.worldConfig[worldNum];
+            document.getElementById('cameraTitle').textContent = this.worldNames[worldNum];
+            document.getElementById('cameraWorldNum').textContent = worldNum;
+            this.updateProgress();
+            this.overlay.classList.add('show');
+            this.stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}, audio:false});
             this.video.srcObject = this.stream;
             await this.video.play();
         } catch(e){
-            alert('No se pudo acceder a la cámara');
-            this.close();
+            if(this.overlay.classList.contains('show')){
+                this.close();
+            }
+            alert('No se pudo acceder a la cámara: ' + e.message);
         }
     },
 

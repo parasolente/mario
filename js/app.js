@@ -51,7 +51,7 @@ const Navigation = {
                 const world = this.closest('.world');
                 if(!world) return;
                 const num = parseInt(world.dataset.world);
-                CameraManager.open(num);
+                CameraManager.open(num).catch(() => {});
             });
         });
     },
