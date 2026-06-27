@@ -22,22 +22,17 @@ const CameraManager = {
     },
 
     async open(worldNum){
+        this.currentWorld = worldNum;
+        this.initWorld(worldNum);
+        document.getElementById('cameraWorldNum').textContent = worldNum;
+        this.updateProgress();
+        this.overlay.classList.add('show');
         try {
-            this.currentWorld = worldNum;
-            this.initWorld(worldNum);
-            const cfg = this.worldConfig[worldNum];
-            document.getElementById('cameraTitle').textContent = this.worldNames[worldNum];
-            document.getElementById('cameraWorldNum').textContent = worldNum;
-            this.updateProgress();
-            this.overlay.classList.add('show');
             this.stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}, audio:false});
             this.video.srcObject = this.stream;
             await this.video.play();
-        } catch(e){
-            if(this.overlay.classList.contains('show')){
-                this.close();
-            }
-            alert('No se pudo acceder a la cámara: ' + e.message);
+        } catch(e) {
+            // Sin camara: el overlay se muestra igual, capture usara placeholder
         }
     },
 
@@ -59,6 +54,13 @@ const CameraManager = {
         document.getElementById('btnSelfie').style.display = done ? 'flex' : 'none';
     },
 
+    getCaptureSize(){
+        if(this.stream && this.video.videoWidth){
+            return {w: this.video.videoWidth, h: this.video.videoHeight};
+        }
+        return {w: 640, h: 480};
+    },
+
     async capture(type){
         const p = this.progress[this.currentWorld];
         const cfg = this.worldConfig[this.currentWorld];
@@ -69,13 +71,23 @@ const CameraManager = {
         this.sfx.currentTime = 0;
         this.sfx.play();
 
+        const {w, h} = this.getCaptureSize();
         const canvas = document.createElement('canvas');
-        const w = this.video.videoWidth || 640;
-        const h = this.video.videoHeight || 480;
         canvas.width = w;
         canvas.height = h;
         const ctx = canvas.getContext('2d');
-        ctx.drawImage(this.video, 0, 0, w, h);
+
+        if(this.stream && this.video.videoWidth){
+            ctx.drawImage(this.video, 0, 0, w, h);
+        } else {
+            ctx.fillStyle = '#FFF9E6';
+            ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = '#5C3A21';
+            ctx.font = '24px Fredoka, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Foto ' + (type === 'coin' ? 'Moneda' : 'Estrella'), w/2, h/2);
+            ctx.fillText('MUNDO ' + this.currentWorld, w/2, h/2 + 40);
+        }
 
         const marcoImg = await this.loadMarco(this.currentWorld);
         ctx.drawImage(marcoImg, 0, 0, w, h);
@@ -111,13 +123,22 @@ const CameraManager = {
         this.sfx.currentTime = 0;
         this.sfx.play();
 
+        const {w, h} = this.getCaptureSize();
         const canvas = document.createElement('canvas');
-        const w = this.video.videoWidth || 640;
-        const h = this.video.videoHeight || 480;
         canvas.width = w;
         canvas.height = h;
         const ctx = canvas.getContext('2d');
-        ctx.drawImage(this.video, 0, 0, w, h);
+
+        if(this.stream && this.video.videoWidth){
+            ctx.drawImage(this.video, 0, 0, w, h);
+        } else {
+            ctx.fillStyle = '#FFF9E6';
+            ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = '#5C3A21';
+            ctx.font = '24px Fredoka, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Selfie Final MUNDO ' + this.currentWorld, w/2, h/2);
+        }
 
         const marcoImg = await this.loadMarco(this.currentWorld);
         ctx.drawImage(marcoImg, 0, 0, w, h);

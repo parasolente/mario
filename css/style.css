@@ -162,6 +162,7 @@ body{
     border:3px solid #fbd000;
 }
 .camera-title{font-family:'SuperMario256',sans-serif;font-size:22px;color:#fff;text-shadow:2px 2px 0 #8b0000;letter-spacing:2px}
+.camera-title-num{font-family:'SuperMario256',sans-serif;font-size:22px;color:#fbd000;text-shadow:2px 2px 0 #8b0000;letter-spacing:2px}
 .camera-close{color:#fff;font-size:20px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:#b31815;border-radius:50%;border:2px solid #fbd000}
 
 .camera-progress{display:flex;justify-content:center;gap:24px;padding:4px 0}
