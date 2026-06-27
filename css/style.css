@@ -103,13 +103,13 @@ body{
     background-color:#FFF9E6;
     background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,0.02) 10px,rgba(0,0,0,0.02) 20px);
     width:55%;min-height:90vh;margin-right:2.5%;border-radius:40px;
-    padding:70px 24px 24px 24px;position:relative;
+    padding:78px 24px 24px 24px;position:relative;
     border:8px solid #FFF;
     box-shadow:0 0 0 8px var(--theme),0 12px 0 8px var(--theme-dark),0 24px 30px 10px rgba(0,40,100,0.3);
     display:flex;flex-direction:column;gap:16px;
 }
-.banner-top{position:absolute;top:-70px;left:50%;transform:translateX(-50%);z-index:10;line-height:0;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.15))}
-.banner-top img{height:130px;display:block}
+.banner-top{position:absolute;top:-55px;left:50%;transform:translateX(-50%);z-index:10;line-height:0;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.15))}
+.banner-top img{height:120px;display:block}
 
 .bubble-container{background:#FFF;border:4px solid #F0E6D2;border-radius:28px;padding:14px 16px;box-shadow:0 6px 0 #E3D7BC;display:flex;align-items:center;gap:12px}
 .hero-header{display:flex;justify-content:space-between;align-items:center;padding:4px 8px}
@@ -236,10 +236,10 @@ body{
     .logo-top-left{top:8px;left:10px}
     .logo-top-left img{height:50px}
     .content-wrap{justify-content:center;padding:0 10px}
-    .mario-card{width:92%;min-height:auto;padding:48px 14px 14px 14px;gap:6px;margin-right:0}
+    .mario-card{width:92%;min-height:auto;padding:50px 14px 14px 14px;gap:6px;margin-right:0}
     .mario-card{border:5px solid #FFF;box-shadow:0 0 0 5px var(--theme),0 6px 0 5px var(--theme-dark),0 12px 20px rgba(0,40,100,0.2)}
-    .banner-top{top:-45px}
-    .banner-top img{height:75px}
+    .banner-top{top:-42px}
+    .banner-top img{height:70px}
     .hero-name-label{font-size:10px;padding:3px 10px}
     .hero-name-value{font-size:18px}
     .hero-icon{width:60px;height:60px;padding:8px;border-width:4px}
